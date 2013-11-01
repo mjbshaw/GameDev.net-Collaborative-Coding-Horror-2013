@@ -2,6 +2,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <vector>
+
 struct ImageData
 {
     unsigned int width;
@@ -55,6 +57,9 @@ int main()
             }
         }
 
+        sprite.move(randomVector(sf::Vector2u(2, 2)) - sf::Vector2f(2.0f, 2.0f));
+
+        screen.clear();
         screen.draw(sprite);
         screen.display();
     }
