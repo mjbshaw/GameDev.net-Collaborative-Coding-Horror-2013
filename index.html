@@ -16,6 +16,9 @@
 						var canvasWidth = canvas.offsetWidth;
 						var canvasHeight = canvas.offsetHeight;
 						var context = canvas.getContext("2d");
+						var lastTime = 0;
+						var keys = new Object();
+						var delta = 0;
 						
 						context.fillStyle = "rgb(0, 0, 0)";
 						context.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -23,7 +26,41 @@
 						var sprite = document.getElementById("sprite");
 						var x = Math.random() * (canvasWidth - sprite.width);
 						var y = Math.random() * (canvasHeight - sprite.height);
-						context.drawImage(sprite, x, y);
+						
+						function Draw() {
+							context.drawImage(sprite, x, y);
+						}
+						
+						function keyDown(e) {
+							e = e || window.event;
+
+							if(e.keyCode == '87') {
+								y += delta;
+							} else if (e.keyCode == '83') {
+								y -= delta;
+							} else if (e.keyCode == '65') {
+								x += delta;
+							} else if (e.keyCode == '68') {
+								x -= delta;
+							}
+						}
+						
+						function Update() {
+							var now = Date.now();
+							if(lastTime === 0) {
+								lastTime = now;
+							}
+							delta = now - lastTime;
+							lastTime = now;
+						}
+						
+						var fps = 60;
+						var intervalId = setInterval(function() {
+							Update();
+							Draw();
+						}, 1000 / fps);
+					
+						document.onkeydown = keyDown;
 					}
 				}
 			</script>
