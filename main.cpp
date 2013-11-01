@@ -13,7 +13,7 @@ extern const ImageData imageData;
 
 float randomFloat()
 {
-    return std::rand() / static_cast<float>(RAND_MAX);
+    return 4.0f; // std::rand() / static_cast<float>(RAND_MAX);
 }
 
 sf::Vector2f randomVector(sf::Vector2u bounds)
