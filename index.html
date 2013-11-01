@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Horror!</title>
+	</head>
+	<body>
+		<div>
+			<canvas id="canvas" width="800" height="600">
+				Your browser does not support the canvas element
+			</canvas>
+		</div>
+		<div style="display: none">
+			<script>
+				window.onload = function() {
+					var canvas = document.getElementById("canvas");
+					if(canvas.getContext) {
+						var canvasWidth = canvas.offsetWidth;
+						var canvasHeight = canvas.offsetHeight;
+						var context = canvas.getContext("2d");
+						
+						context.fillStyle = "rgb(0, 0, 0)";
+						context.fillRect(0, 0, canvasWidth, canvasHeight);
+						
+						var sprite = document.getElementById("sprite");
+						var x = Math.random() * (canvasWidth - sprite.width);
+						var y = Math.random() * (canvasHeight - sprite.height);
+						context.drawImage(sprite, x, y);
+					}
+				}
+			</script>
+			<img id="sprite" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTFH80I3AAABDElEQVRYR8XOC27CMBBFUVbQNWVnzc4pZETGTk4+tiVa6UjtA9/p4/Xz/Gccv4njzjzPTdQ4wHGleAs1NzgudrHfn1t279AucFy0HD0y9A8o2EXtxDEo1kPtxDEo1kPtxDEo1kPtxDG0hVLbO45hGyn/PqO3xziGMjJC7cQxnMXu7uVnxtGhEboRODoyQjcCR0dG6Ebg6Ehp9PuJoyMjdCNwDAr1UDtxDIr1UDtxDIp9jHy3xjEo9qbPrr5/jGNQrIfaiWNSsIWaNY41he9Qa4+j6Yjo7TGOVh4oD2638s01jpVpmuL37cHS5rP1zTWOlXdsCZZHTqzfRws4VtYYjlH55hpH0zHRW3o8/wAvkCGGQzdTzQAAAABJRU5ErkJggg=="/>
+		</div>
+	</body>
+</html>
